@@ -1,0 +1,16 @@
+header { text-align: center; background: antiquewhite;}
+nav {height: 40px; background: #5cfa95;}
+ul,li{ padding:0;margin:0;list-style:none; float: left;}
+nav ul li a{ text-decoration-line: none; margin-left: 220px; line-height: 40px;}
+aside{  float: left; width: 900px; height: 600px;}
+article{ background: brown; width: 820px; height: 560px; margin-left: auto; margin-right: auto;}
+.blog1{ background: #f8f7f9; width: 800px; text-align: center; margin-left: auto; margin-right: auto;
+ height: 180px;}
+.blog2{ background: #f8f7f9; width: 800px; text-align: center; margin-left: auto; margin-right: auto;
+ height: 180px;}
+.photo{ background: dimgrey; width: 100px; height: 134px; float: left; margin-top: 16px; margin-left: 20px;}
+main {text-align: center; height: 600px;}
+main ul{ background: antiquewhite; width: 600px; height: 580px; margin-left:40px; margin-top: 10px;}
+main ul li{ margin-top: 20px;}
+main ul li a{ text-decoration-line: none; margin-left: 100px;}
+footer{background: #ffd125; text-align: center;}
