@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+//179000507黄维
+		//1.
+// 		function Animal(species){
+// 			this.species = species;
+// 		}
+// 		function Dog(species,age){
+// 			Animal.call(this,species);
+// 			this.age = age;
+// 		}
+// 		var Dog1 = new Dog("哈士奇",10);
+// 		console.log(Dog1);
+
+		//2.首先用原型模式创建Person方法,在Worker里面使用Person.call方法将obj4对象传入的name赋值给Worker,
+		//以实现继承，同时用Worker.prototype=new Person()去指向Person方法里面的run方法.
+// 		function Person(name){
+// 			this.name = name;
+// 		}
+// 		Person.prototype.run = function(){
+// 			console.log("跑");
+// 		}
+// 		
+// 		function Worker(name,salary){
+// 			Person.call(this,name);
+// 			this.salary = salary;
+// 		}
+// 		Worker.prototype = new Person();
+// 		var obj4 = new Worker("赵云",100)
+// 		
+// 		console.log(obj4);
+
+		//3.
+// 		var person1 = {
+// 			name: "刘备",
+// 			sex: "男",
+// 			run: function(){
+// 				console.log("跑");
+// 			}
+// 		}
+// 		var person2 = Object.create(person1);
+// 		console.log(person2);
+
+		//4.
+// 		function inheritPrototype(sFun,pFun){
+// 			var myPrototype = new Object(pFun.prototype);
+// 			myPrototype.constructor = sFun;
+// 			sFun.prototype = myPrototype;
+// 		}
+// 		function Person(name){
+// 			this.name = name;
+// 		}
+// 		Person.prototype.run = function(){
+// 			console.log("跑");
+// 		}
+// 		function Worker(name,salary){
+// 			Person.call(this,name);
+// 			this.salary = salary;
+// 		}
+// 		inheritPrototype(Worker,Person);
+// 		var worker1 = new Worker("赵云",100);
+// 		console.log(worker1);
+
+		//5.
+// 		javascript实现继承主要靠:
+// 		对象冒充;
+// 		call()方法方式;
+// 		攀爬原型链方式,子类通过prototype将所有在父类中通过prototype追加的属性和方法都追加到Child，从而实现了继承;
+// 		以及混合方式,即混合了call方式、原型链方式.
+	</script>
+</html>

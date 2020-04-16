@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		//179000507黄维
+		//1.运行如下代码，在实验报告中写运行结果，并简要阐述原因
+				let arr1 = [1,2,3];
+				
+				let arr2 = arr1;
+				console.log(arr1==arr2);
+				
+				let arr3 = [...arr1];
+				console.log(arr1==arr3);
+		//将arr1直接赋值给arr2只是将arr1的地址赋值给了arr2所以,他们两个是相等的,
+		//而用...将arr1赋值给arr3相当于是把arr1中的整
+		//个参数序列赋值给了arr3,他们两个本质上是不一样的
+
+		//2.用箭头函数改写如下代码，在实验报告中写出改写后的代码
+				let arr4 = [1,2,3];
+				arr4.forEach(function(v,k){
+					console.log(v);
+				})
+		//改写后:
+				arr4.forEach((v,k) =>  console.log(v));
+
+		//3.运行如下代码，在实验报告中写出这两句代码的作用
+		Array.of(1, 2, 3).filter(i => i > 1).forEach(i => console.log(i));
+		//用Array.off方法将一串值改变为一串数组,
+		//然后用filter方法检查其中大于1的元素存入i中,然后遍历i
+		
+		let fib = n => n > 1 ? fib(n - 1) + fib(n - 2) : n;
+		//创建一个fib函数带有参数n,判断如果n>1就返回fib(n - 1) + fib(n - 2) : n
+		
+		//4.使用class和extends实现如下关系，测试并将代码填写在实验报告中
+		class Animal{
+			constructor(name) {
+			    this.name = name;
+			}
+			shount(){
+				console.log('叫')
+			}
+		}
+		
+		class Dog extends Animal {
+        constructor(name) {
+            super(name);
+            this.name = name;
+        }
+        eat() {
+            console.log(this.name+'：吃')
+			}
+		}
+	
+		var dog = new Dog('哈士奇');
+		dog.eat();
+	</script>
+</html>

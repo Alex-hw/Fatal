@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+
+	<script>
+		// 			console.log(Boolean(""),typeof Boolean(""));
+		// 			
+		// 			console.log(Boolean(1),typeof Boolean(1));
+		// 			
+		// 			console.log(Boolean(NaN),typeof Boolean(NaN));
+		// 			
+		// 			console.log(Boolean("false"),typeof Boolean("false"));
+		// 			
+		// 			console.log(Boolean(null),typeof Boolean(null));
+		// 			
+		// 			console.log(Boolean(undefined),typeof Boolean(undefined));
+		// 			
+		// 			console.log(Number(true),typeof Number(true));
+		// 			
+		// 			console.log(Number(null),typeof Number(null));
+		// 			
+		// 			console.log(Number(undefined),typeof Number(undefined));
+		// 			
+		// 			console.log(Number("0xff"),typeof Number("0xff"));
+		// 			
+		// 			console.log(Number(""),typeof Number(""));
+		// 			
+		// 			console.log(String(1024),typeof String(1024));
+		// 			
+		// 			console.log(String(null),typeof String(null));
+		// 			
+		// 			console.log(String(NaN),typeof String(NaN));
+
+
+
+		// 			console.log(+"", typeof(+"")); 
+		// 			console.log(+true, typeof(+true)); 
+		// 			console.log(-"05", typeof(-"05")); 
+		// 			console.log(!!"", typeof(!!""));
+		// 			 
+		// 			console.log(NaN==NaN); 
+		// 			console.log("0x00"==0); 
+		// 			console.log(""===0);
+
+
+		var row = 5; 
+		for (var r = 1; r <= row; r++) { 
+			var triangle = ""; 
+			for (var space = r; space < row; space++) { 
+				triangle += "&nbsp;&nbsp;&nbsp;";
+			}
+			for (var star = 1; star <= r ; star++) { 
+				triangle += "&nbsp;&nbsp;*&nbsp;&nbsp;";
+			}
+			document.write(triangle + "</br>");
+		}
+		//179000507黄维
+		document.write("<hr>");
+
+		for (i = 0; i < 5; i++) {
+			for (n = 0; n < 5 + i; n++) {
+				if (n < i) {
+					document.write("&nbsp;&nbsp;");
+				} else {
+					document.write("&nbsp;*&nbsp;");
+				}
+			}
+			document.write("</br>");
+		}
+	</script>
+</html>

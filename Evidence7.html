@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+//179000507黄维
+		//1.运行如下代码，在实验报告中写出代码1和代码2的结果，并简要阐述原因
+				console.log(x);
+				var x = 1;
+		//undefined 变量声明提前但是未赋值
+				console.log(y);
+				let y = 2;
+		//y is not defined y是局部变量未声明
+
+		//2.利用块级作用域可以让num无法访问，该如何实现，请编写代码实验并在实验报告中写出结果
+				{let num = 100;}
+				console.log(num);
+		//加一个大括号让num成为大括号里的局部变量
+
+		//3.运行如下代码，在实验报告中写出所有变量的输出结果，同时思考最后一段代码结果的原因
+				let a1,b1,c1=[1,2,3,];
+				console.log(a1,b1,c1);
+		//undefined undefined [1, 2, 3] 只为最后的c1赋了值
+
+				let [a2,b2,c2] = [1,2,3,];
+				console.log(a2,b2,c2);
+		//1 2 3 对a2,b2,c2解构赋值
+
+				let [a3,b3,c3] = [1, ,3,];
+				console.log(a3,b3,c3);
+		//1 undefined 3 b3的解构赋值未赋值
+
+				let [a4,b4] = [1];
+				console.log(a4,b4);
+		//1 undefined b4的解构赋值未赋值
+
+				let {y:a5,b5}={x:1,y:2};
+				console.log(a5,b5);
+		//2 undefined b5的解构赋值未赋值
+
+				let {a6,b6}=123;
+				console.log(a6,b6);
+		//undefined undefined 123并非一个对象
+
+		//4.运行如下代码，写出实验结果
+				let	set = new Set();
+				set.add(1);
+				set.add(2);
+				set.add(3);
+				set.delete(2);
+				
+				let i = set.values();
+				console.log(i.next());
+				console.log(i.next());
+				console.log(i.next());
+		//Object {value: 1, done: false}
+		//Object {value: 3, done: false}
+		//Object {value: undefined, done: true}
+
+		//5.运行以下代码，思考为什么最后一段代码没有输出任何结果
+		// 		let map = new Map();
+				map.set(1,"a");
+				map.set(2,"b");
+				map.set(3,"c");
+				map.set(4,"d");
+
+				for (let i = 1;i<=map.size;i++){
+					console.log(map.get(i));
+				}
+				map.forEach(function(value,key){
+					console.log(value);
+				});
+				for(let v of map.values()){
+					console.log(v);
+				}
+				for(var prop in map){
+					console.log(prop);
+				}
+		//语法有误不能使用var in
+
+		//6.利用模板字符串，我们实现一个简易的新闻详情页显示函数
+		function showNews(title, content, date, tmp) {
+			let out;
+			if (tmp == 1) {
+				out =
+					`<h2>${title} <span style = "font-size:12px;">发布日期:${date} </span></h2>
+					<hr style = "border：1px #000 dashed;border-bottom:0px;"/>
+					<p>
+					<img src = "https://picsum.photos/200/100" style = "float:left;" hspace = "5px"/>
+					${content} </p>`;
+			}
+			if (tmp == 2) {
+				out =
+					`<h2>${title} </h2> <h5 style="font-size:12px;" > 发布日期: ${date} </h5>
+				<hr style = "border:1px #000 dashed;border-bottom:0px;"/ >
+                <div style = "text-align:center;" >
+                <img src = "https://picsum.photos/200/100"/></div> 
+                <p>${content}</p>`;
+			}
+			if(tmp == 3){
+            out =
+            `<h2 style="color: #f08421">${title}</h2> <h4 style="font-size:12px;" > 发布日期: ${date} </h4>
+             <hr style = "border:1px #000 dashed;border-bottom:0px;"/ >
+             <div style = "text-align:center;" >
+             <img src = "https://picsum.photos/250/150"/></div>
+             <p>${content}</p>`;
+        }
+			document.write(out);
+		}
+	</script>
+	<script>
+		var news1 = {
+			title: "重庆市公共场所控制吸烟条例预计今年进入初审",
+			content: "《重庆市人大常委会2020年立法计划》已于市五届人大",
+			date: new Date().toLocaleDateString()
+		};
+		showNews(news1.title, news1.content, news1.date, 1); 
+	</script>
+	<script>
+		var news2 = {
+			title:"重庆市公共场所控制吸烟条例",
+			content:"《重庆市人大常委会2020年立法计划》已于市五届人大",
+			date:new Date().toLocaleDateString()
+		};
+		showNews(news2.title, news2.content, news2.date, 2);
+	</script>
+	<script>
+		var news3 = {
+			title: "重庆市公共场所控制吸烟条例预计今年进入初审",
+			content: "《重庆市人大常委会2020年立法计划》已于市五届人大",
+			date: new Date().toLocaleDateString()
+		};
+		showNews(news3.title, news3.content, news3.date, 3); 
+	</script>
+</html>

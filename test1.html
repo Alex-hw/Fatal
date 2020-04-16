@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		// 		name="lwy";
+		// 		function t(){
+		// 			var name="tlwy";
+		// 			function s(){
+		// 				var name="slwy";
+		// 				console.log(name);
+		// 			}
+		// 			function ss(){
+		// 				console.log(name);
+		// 			}
+		// 			s();
+		// 			ss();
+		// 		}
+		// 		t();
+
+
+		function fun() {
+			var num = 100;
+
+			function sfun() {
+				num++;
+				console.log(num);
+			}
+			return sfun;
+		}
+		var f = fun();
+		f();
+		f();
+		f();
+	</script>
+</html>
