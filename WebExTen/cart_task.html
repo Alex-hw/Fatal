@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
+		<title>购物车</title>
+		<link rel="stylesheet" type="text/css" href="css/shoppingcart.css" />
+		<script src="../js/jquery-3.1.1.min.js"></script>
+	</head>
+	<body>
+		<div class="body">
+			<div class="shop"><i></i><span>我的购物车</span></div>
+			<div class="product">
+				<div class="product-box">
+					<div class="product-ckb"><em class="product-em product-xz"></em></div>
+					<div class="product-sx">
+						<a href="###">
+							<img src="img/a3.png" class="product-img" />
+							<span class="product-name">酷冷至尊(Cooler Master)T610P CPU风冷散热器</span>
+						</a>
+						<span class="product-price">¥&thinsp;<span class="price">299</span></span>
+						<div class="product-amount">
+							<div class="product_gw">
+								<em class="product-jian">-</em>
+								<input type="text" value="1" class="product-num" />
+								<em class="product-add">+</em>
+							</div>
+						</div>
+						<div class="product-del"><img src="img/deleteico.png" /></div>
+					</div>
+				</div>
+				<div class="product-box">
+					<div class="product-ckb"><em class="product-em"></em></div>
+					<div class="product-sx">
+						<a href="###">
+							<img src="img/a1.png" class="product-img" />
+							<span class="product-name">游戏悍将 35英寸曲面电竞显示器21:9带鱼屏准4K游戏显示器</span>
+						</a>
+						<span class="product-price">¥&thinsp;<span class="price">2099</span></span>
+						<div class="product-amount">
+							<div class="product_gw">
+								<em class="product-jian">-</em>
+								<input type="text" value="1" class="product-num" />
+								<em class="product-add">+</em>
+							</div>
+						</div>
+						<div class="product-del"><img src="img/deleteico.png" /></div>
+					</div>
+				</div>
+
+				<div class="product-box">
+					<div class="product-ckb"><em class="product-em"></em></div>
+					<div class="product-sx">
+						<a href="###">
+							<img src="img/a2.png" class="product-img" />
+							<span class="product-name">技嘉（GIGABYTE） 2080TURBO OC 8GC</span>
+						</a>
+						<span class="product-price">¥&thinsp;<span class="price">1099</span></span>
+						<div class="product-amount">
+							<div class="product_gw">
+								<em class="product-jian">-</em>
+								<input type="text" value="1" class="product-num" />
+								<em class="product-add">+</em>
+							</div>
+						</div>
+						<div class="product-del"><img src="img/deleteico.png" /></div>
+					</div>
+				</div>
+
+				<div class="product-box">
+					<div class="product-ckb"><em class="product-em"></em></div>
+					<div class="product-sx">
+						<a href="###">
+							<img src="img/a4.png" class="product-img" />
+							<span class="product-name">AMD 锐龙 5 2600X 处理器 (R5) 6核12线程 AM4 </span>
+						</a>
+						<span class="product-price">¥&thinsp;<span class="price">1299</span></span>
+						<div class="product-amount">
+							<div class="product_gw">
+								<em class="product-jian">-</em>
+								<input type="text" value="1" class="product-num" />
+								<em class="product-add">+</em>
+							</div>
+						</div>
+						<div class="product-del"><img src="img/deleteico.png" /></div>
+					</div>
+				</div>
+			</div>
+			<div class="product-js">
+				<div class="product-al">
+					<div class="product-all">
+						<em class=""></em>
+					</div>
+					<div class="all-xz"><span class="product-all-qx">全选</span>
+						<div class="all-sl" style="display: none;">(<span class="product-all-sl">0</span>)</div>
+					</div>
+				</div>
+				<a href="#" class="product-sett product-sett-a">结算</a>
+				<div class="all-product"><span class="all-product-a">¥&thinsp;<span class="all-price">296</span></span></div>
+
+			</div>
+		</div>
+		<!--购物车空-->
+		<div class="kon-cat">
+			<div class="catkon">
+				<div class="kon-box">
+					<div class="kon-hz">
+						<img src="img/cart-air.png" />
+						<span class="kon-wz">购物车什么都没有</span>
+						<a href="###" class="kon-lj">去逛逛</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		$(function() {
+			quan();		
+			counter();
+			jsa();
+			allon();
+
+			var bindex = [];		//通过查找每一个价格而创立的一个数组,将数组传入加、减函数以得到原始价格;
+			for(let i=0;i<$(".product-add").length;i++){
+				bindex[i] = $(".product-add").eq(i).parent().parent().parent().find(".price").html();
+			}
+			
+			dup(bindex);
+			sub(bindex);
+
+			function quan() {
+				let checked;			//被选中的商品
+				let all;				//所有商品
+				let count;				//创立包含所有商品的总价格的数组
+				
+				allon();		//获取被选中的商品数量以在全选旁边显示
+				
+				$("em:last").on("click", function() {
+					checked = $(".product-xz").length;
+					all = $(".product-ckb em").length;
+					
+					if (checked < all) {								//如果被选中的商品数小于商品总数,遍历所有商品让其被选中
+								//按了之后让全选被选中
+						$(".product-ckb em").each(function() {
+							$(this).addClass("product-xz");
+							
+							
+						});
+						
+					} else if (checked == all) {						//如果被选中的商品数等于商品总数,遍历所有商品让其被取消选中
+								//按了之后让全选被取消选中
+						$(".product-ckb em").each(function() {
+							$(this).removeClass("product-xz");
+							
+							
+						});
+						
+					}
+					checked = $(".product-xz").length;					//从新获取被选中的商品数量,以在全选旁边显示
+					$(".product-all-sl").html(checked);
+					
+					allon();
+					counter();
+					jsa();
+				});
+				
+				
+				$(".product-ckb em").on("click", function() {					//实现选中开关,判断全选是否该被选中
+					var index = $(".product-ckb em").index(this);
+					$(".product-ckb em").eq(index).toggleClass("product-xz");
+				
+					checked = $(".product-xz").length;
+					all = $(".product-ckb em").length;
+					$(".product-all-sl").html(checked);
+					
+					allon();
+					counter();
+					jsa();
+					
+				});
+				
+				
+				$("[src='img/deleteico.png']").on("click", function() {				//实现点击删除,判断如果在选中商品为0的情况下取消全选的选中,如果选中的和总数相等,全选选中
+					
+					var index = $("[src='img/deleteico.png']").index(this);
+					alert("确定要删除此商品吗？");
+					$(".product-box").eq(index).remove();
+					
+					all = $(".product-ckb em").length;
+					
+					checked = $(".product-xz").length
+					$(".product-all-sl").html(checked);
+
+					allon();
+					counter();
+					jsa();
+				});
+				
+			}
+
+			//----------------------------------------------------------------------------------
+			
+			function counter(){								//从新获取被选中商品并遍历，将其价格求和，以获取总价
+				let checked = $(".product-xz").length;
+
+				let count= new Array();
+				let account = 0;
+				
+				for(let i=0;i<checked;i++){
+					var aa = $(".product-xz").eq(i).parent().parent().find(".price").html();
+					count[i] = aa;
+				}
+				for(let i=0;i<count.length;i++){
+					account += parseInt(count[i]);
+				}
+				
+				$(".all-price").html(account);
+
+			}
+			
+			function jsa(){									//从新获取被选中商品的长度,以得到结算按钮是否应该改变背景
+				let checked = $(".product-xz").length;
+				if(checked>0){
+					$(".product-js").find("a").removeClass("product-sett-a");
+				}if(checked==0){
+					$(".product-js").find("a").addClass("product-sett-a")
+				}
+			}
+			
+			function sub(arr){													//实现减的功能，从传入的数组[index],获取原始价格,最终价格=price*num;
+				
+				$(".product-jian").on("click",function(){
+					let index = $(".product-jian").index(this);
+					let tag = $(".product-jian").eq(index).parent().parent().parent();
+					
+					let price = arr[index];
+					let num = tag.find(".product-num").val();
+					
+					if(num>1){
+						num = parseInt(num) - 1;
+						tag.find(".product-num").val(num);
+					}
+					
+					num = tag.find(".product-num").val();
+					let con = price*num;
+					
+					tag.find(".price").html(con);
+					
+					counter();
+				});
+			}
+			function dup(arr){													//实现加的功能，从传入的数组[index],获取原始价格,最终价格=price*num;
+				
+				$(".product-add").on("click",function(){
+					let index = $(".product-add").index(this);
+					let tag = $(".product-add").eq(index).parent().parent().parent();
+					
+					let price = arr[index];
+					let num = tag.find(".product-num").val();
+					
+					num = parseInt(num) + 1;
+					tag.find(".product-num").val(num);
+					
+					num = tag.find(".product-num").val();
+					
+					let con = price*num;
+					
+					tag.find(".price").html(con);
+					
+					counter();
+				});
+			}
+			
+			function allon(){
+				let fchecked = $(".product-xz").length;
+				let fall = $(".product-ckb em").length;
+				console.log(fchecked);
+				console.log(fall);
+				if(fchecked==0){
+					$(".product-all-qx").html("全选");
+					$(".all-sl").attr("style", "display:none");
+					$("em:last").removeClass("product-all-on");
+				}else if(fchecked<fall){
+					$(".product-all-qx").html("已选");
+					$(".all-sl").attr("style", "display:inline-block");
+					$(".product-all-sl").html(fchecked);
+					$("em:last").removeClass("product-all-on");
+				}else if(fchecked==fall){
+					$(".product-all-qx").html("全选");
+					$(".all-sl").attr("style", "display:none");
+					$("em:last").addClass("product-all-on");
+				}
+			}
+			
+		});
+	</script>
+</html>

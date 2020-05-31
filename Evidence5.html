@@ -8,7 +8,7 @@
 	</body>
 	<script>
 		//179000507黄维
-				//1.
+				//1.字面量方式创建对象
 				var obj1 = {
 		        name: "刘备",
 		        sex: "男",
@@ -34,7 +34,7 @@
 				var obj3 = creatObj("刘备","男",new Function("console.log('跑')"));
 				
 
-				//4.
+				//4.使用构造函数创建对象
 				function Student(name, sex) {
 					this.name = name;
 					this.sex = sex;
@@ -44,7 +44,7 @@
 				}
 				var obj4 = new Student("刘备", "男");
 
-				//5.
+				//5.使用原型模式创建对象
 				function Person() {
 				};
 				Person.prototype.name = "刘备 ";
@@ -68,7 +68,11 @@
 				console.log(obj7);
 				obj7.run();
 
-				//7.
+				//7.4个特性分别为：
+// 				[Value]:表示属性的值
+// 				[Writable]：表示值是否可以被修改
+// 				[Enumberable]：表示属性是否可以被枚举，如果不能，那就不能用for-in循环
+// 				[Configurable]:表示属性是否可以被删除和属性的特性是否可被修改			
 				function Person(name) {
 					this.name = name;
 				}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="js/utils.js"></script>
+	<script>
+		//179000507黄维
+		//函数调用
+		var str=" jsss"
+		console.log(str);
+		console.log(trim(str));
+		//数值比较
+		console.log(equals("js","js"));
+		console.log(equals(1,2));
+		//
+		var a="";
+		var b="js";
+		console.log(isEmpty(a))
+		console.log(isEmpty(b));
+		//验证Email
+		var c="jk@";
+		console.log(isEmail(c));
+		//获得日期
+		console.log(getCurrentDate());
+		////每月获得最后一天
+		console.log(getLastDay(2020,8));
+		console.log(getLastDay(2020,2));
+		//判断元素是否在数组内
+		var val = "g";
+		var val2 = "a";
+		var arr1 =["a","b","c","d"];
+		console.log(inArray(val,arr1));
+		console.log(inArray(val2,arr1));
+	</script>
+	</body>
+</html>
